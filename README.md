@@ -6,7 +6,7 @@ Passing solutions to all problems.
 
 Ample credit goes to Lawry and Kevin, the other two members of my team.
 
-Our team did not solve the problems "Fraudulent Activity Notifications" and "Balanced Forest" during the competition.  
+Our team did not solve the problems "Fraudulent Activity Notifications" and "Balanced Forest" during the competition.
 These two were solved "posthumously".
 
 Note that test #5 of "Balanced Forest" includes an expected output of `0`, even though this is outside of the problem's specified constraints
