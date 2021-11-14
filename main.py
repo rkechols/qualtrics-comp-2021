@@ -72,22 +72,25 @@ def find_sol(parents: Set[int], tw: int, prev: Set[int], index: int, graph: Dict
     prev.add(c[index])
 
 
+def dfs_make_directed(current: int, graph: Dict[int, Set[int]]):
+    for child in graph[current]:  # base case is when it has no children
+        graph[child].discard(current)
+        dfs_make_directed(child, graph)
+
+
 def balancedForest(c, edges):
     # print("******************************************")
     global MIN
     MIN = -1
     n = len(c)
-    graph = { i: set() for i in range(n) }
+    # build an adjacency list structure from the undirected edges
+    graph = {i: set() for i in range(n)}
     for x, y in edges:
         graph[x - 1].add(y - 1)
+        graph[y - 1].add(x - 1)
+    # pick an arbitrary node as root and make the graph directed, edges leading only away from the root
     root = 0
-    while True:
-        for top, children in graph.items():
-            if root in children:
-                root = top
-                break
-        else:
-            break
+    dfs_make_directed(root, graph)
     dfs_weights(graph, c, root)
     parents = set()
     prev = set()
