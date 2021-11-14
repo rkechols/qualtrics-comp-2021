@@ -3,6 +3,9 @@
 import os
 
 
+# <code>
+
+
 def all_equal(h1_sum, h2_sum, h3_sum):
     return h1_sum == h2_sum and h2_sum == h3_sum
 
@@ -28,6 +31,9 @@ def equalStacks(h1, h2, h3):
             del h3[-1]
             h3_sum -= to_remove
     return h1_sum
+
+
+# </code>
 
 
 if __name__ == '__main__':
