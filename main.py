@@ -76,7 +76,7 @@ class Solver:
         return self.minimum
 
     def tricut(self, parents: Set[int], prev: Set[int], tw: int, nw: int):
-        if nw < (tw / 3):
+        if nw <= (tw / 3):
             if (tw - nw) % 2 == 0:
                 tw_stuff = (tw - nw) // 2
                 if findcut(parents, prev, tw_stuff, nw):
