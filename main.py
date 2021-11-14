@@ -49,7 +49,11 @@ class Solver:
             self.c[index] += self._dfs_weights(child)
         return self.c[index]
 
-    def solve(self, parents: Set[int], tw: int, prev: Set[int], index: int):
+    def solve(self, parents: Set[int], prev: Set[int], tw: int = None, index: int = None):
+        if tw is None:
+            tw = self.c[self.root]
+        if index is None:
+            index = self.root
         # print(f"{parents=}")
         # print(f"{tw=}")
         # print(f"{prev=}")
@@ -62,7 +66,7 @@ class Solver:
             # print(MIN)
         parents.add(self.c[index])
         for child in self.graph[index]:
-            self.solve(parents, tw, prev, child)
+            self.solve(parents, prev, tw, child)
         parents.discard(self.c[index])
         prev.add(self.c[index])
 
@@ -91,7 +95,7 @@ def balancedForest(c: List[int], edges: List[List[int]]) -> int:
     solver = Solver(c, edges)
     parents = set()
     prev = set()
-    solver.solve(parents, c[solver.root], prev, solver.root)
+    solver.solve(parents, prev)
     return solver.minimum
 
 
