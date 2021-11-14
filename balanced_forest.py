@@ -73,9 +73,9 @@ class Solver:
                 if findcut(parents, prev, tw_stuff, nw):
                     # print("FINDCUT SAID YES")
                     self.upmin(tw_stuff - nw)
-        elif nw == tw - nw:
-            # upmin(nw)
-            pass
+        # elif nw == tw - nw:
+        #     # upmin(nw)
+        #     pass
         elif nw > (tw / 3):
             if findcut(parents, prev, nw, nw) or findcut(parents, prev, tw - (2 * nw), nw):
                 # print("FINDCUT SAID YES")
