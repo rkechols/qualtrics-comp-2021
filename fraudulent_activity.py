@@ -6,14 +6,16 @@ import os
 # <code>
 
 
+from bisect import bisect_left, insort
+
+
 def activityNotifications(expenditure, d):
     count = 0
+    chunk = expenditure[:d]
+    chunk.sort()
+    split_index = d // 2
     for i in range(d, len(expenditure)):
-        chunk = expenditure[i - d:i]
-        chunk.sort()
-        n = len(chunk)
-        split_index = n // 2
-        if n % 2 == 0:
+        if d % 2 == 0:
             first = chunk[split_index]
             second = chunk[split_index - 1]
             median = (first + second) / 2
@@ -21,6 +23,8 @@ def activityNotifications(expenditure, d):
             median = chunk[split_index]
         if expenditure[i] >= median * 2:
             count += 1
+        del chunk[bisect_left(chunk, expenditure[i - d])]
+        insort(chunk, expenditure[i])
     return count
 
 
