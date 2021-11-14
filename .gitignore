@@ -1,6 +1,7 @@
 .idea/
 input.txt
 output.txt
+tests/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
