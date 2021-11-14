@@ -6,11 +6,14 @@ import os
 # <code>
 
 
-def all_equal(h1_sum, h2_sum, h3_sum):
+from typing import List
+
+
+def all_equal(h1_sum: int, h2_sum: int, h3_sum: int) -> bool:
     return h1_sum == h2_sum and h2_sum == h3_sum
 
 
-def equalStacks(h1, h2, h3):
+def equalStacks(h1: List[int], h2: List[int], h3: List[int]) -> int:
     h1 = list(reversed(h1))
     h2 = list(reversed(h2))
     h3 = list(reversed(h3))
@@ -42,9 +45,9 @@ if __name__ == '__main__':
     n1 = int(first_multiple_input[0])
     n2 = int(first_multiple_input[1])
     n3 = int(first_multiple_input[2])
-    h1 = list(map(int, input().rstrip().split()))
-    h2 = list(map(int, input().rstrip().split()))
-    h3 = list(map(int, input().rstrip().split()))
-    result = equalStacks(h1, h2, h3)
+    h1_ = list(map(int, input().rstrip().split()))
+    h2_ = list(map(int, input().rstrip().split()))
+    h3_ = list(map(int, input().rstrip().split()))
+    result = equalStacks(h1_, h2_, h3_)
     fptr.write(str(result) + '\n')
     fptr.close()

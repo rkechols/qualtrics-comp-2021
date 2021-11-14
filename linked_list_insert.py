@@ -34,7 +34,7 @@ def print_singly_linked_list(node, sep, fptr):
 # <code>
 
 
-def insertNodeAtPosition(llist, data, position):
+def insertNodeAtPosition(llist: SinglyLinkedListNode, data: int, position: int) -> SinglyLinkedListNode:
     if position == 0:
         new_head = SinglyLinkedListNode(data)
         new_head.next = llist
@@ -55,13 +55,13 @@ def insertNodeAtPosition(llist, data, position):
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
     llist_count = int(input())
-    llist = SinglyLinkedList()
+    llist_ = SinglyLinkedList()
     for _ in range(llist_count):
         llist_item = int(input())
-        llist.insert_node(llist_item)
-    data = int(input())
-    position = int(input())
-    llist_head = insertNodeAtPosition(llist.head, data, position)
+        llist_.insert_node(llist_item)
+    data_ = int(input())
+    position_ = int(input())
+    llist_head = insertNodeAtPosition(llist_.head, data_, position_)
     print_singly_linked_list(llist_head, ' ', fptr)
     fptr.write('\n')
     fptr.close()

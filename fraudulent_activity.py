@@ -6,10 +6,11 @@ import os
 # <code>
 
 
+from typing import List
 from bisect import bisect_left, insort
 
 
-def activityNotifications(expenditure, d):
+def activityNotifications(expenditure: List[int], d: int) -> int:
     count = 0
     chunk = expenditure[:d]
     chunk.sort()
@@ -35,8 +36,8 @@ if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
     first_multiple_input = input().rstrip().split()
     n = int(first_multiple_input[0])
-    d = int(first_multiple_input[1])
-    expenditure = list(map(int, input().rstrip().split()))
-    result = activityNotifications(expenditure, d)
+    d_ = int(first_multiple_input[1])
+    expenditure_ = list(map(int, input().rstrip().split()))
+    result = activityNotifications(expenditure_, d_)
     fptr.write(str(result) + '\n')
     fptr.close()

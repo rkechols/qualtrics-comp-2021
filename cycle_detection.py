@@ -34,7 +34,7 @@ def print_singly_linked_list(node, sep, fptr):
 # <code>
 
 
-def has_cycle(head):
+def has_cycle(head: SinglyLinkedListNode) -> int:
     id_set = set()
     current = head
     while current is not None:
