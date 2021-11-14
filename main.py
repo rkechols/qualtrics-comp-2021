@@ -49,7 +49,11 @@ class Solver:
             self.c[index] += self._dfs_weights(child)
         return self.c[index]
 
-    def solve(self, parents: Set[int], prev: Set[int], tw: int = None, index: int = None):
+    def solve(self, parents: Set[int] = None, prev: Set[int] = None, tw: int = None, index: int = None):
+        if parents is None:
+            parents = set()
+        if prev is None:
+            prev = set()
         if tw is None:
             tw = self.c[self.root]
         if index is None:
@@ -69,6 +73,7 @@ class Solver:
             self.solve(parents, prev, tw, child)
         parents.discard(self.c[index])
         prev.add(self.c[index])
+        return self.minimum
 
     def tricut(self, parents: Set[int], prev: Set[int], tw: int, nw: int):
         if nw < (tw / 3):
@@ -93,10 +98,8 @@ class Solver:
 def balancedForest(c: List[int], edges: List[List[int]]) -> int:
     # print("******************************************")
     solver = Solver(c, edges)
-    parents = set()
-    prev = set()
-    solver.solve(parents, prev)
-    return solver.minimum
+    answer = solver.solve()
+    return answer
 
 
 # </code>
